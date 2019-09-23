@@ -1,8 +1,9 @@
 var $j = jQuery.noConflict();
 $j(function($) {
-	$('#sales_timer_display').each(function(){
-		console.log(this.value);
-		var datadate = $("#sales_timer_display").attr("data-date");
+	$timerDiv = $("[id^=sales_timer_display]");
+	$timerDiv.each(function(i, el){
+		var $elem = $( el );
+		var datadate = $elem.attr("data-date");
 		
 		console.log(datadate);
 		var year = datadate.split("-")[0];
@@ -12,7 +13,7 @@ $j(function($) {
 		var dayz = new Date(year, month - 1, days);
 
 		//$('#sales_timer_display').cuntdown({ 
-		$('#sales_timer_display').cuntdown({ 
+			$elem.cuntdown({ 
 							until: dayz, 
 							compact: true,
 							//format: 'DHMS', 
@@ -22,14 +23,14 @@ $j(function($) {
 							layout: 'Ends {dn} {dl} {hnn}{sep}{mnn}{sep}{snn} {desc}'
 						});
 						
-		var periods = $('#sales_timer_display').cuntdown('getTimes'); 
+		var periods = $elem.cuntdown('getTimes'); 
 
 		if(periods == "0,0,0,0,0,0,0") {
-			$("#sales_timer_display").css({ "display" : "none" });
+			$elem.css({ "display" : "none" });
 		}
 
 		function lit_st_sale_timer_echo_producte_expire() {
-			$("#sales_timer_display").css({ "display" : "none" });
+			$elem.css({ "display" : "none" });
 		}
 	});
 		

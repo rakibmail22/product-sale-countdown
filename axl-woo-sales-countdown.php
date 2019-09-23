@@ -41,14 +41,13 @@ function sales_timer_echo_product() {
 		$regular_price 	= get_post_meta( $product->get_id(), '_sale_price_dates_to', true );
 		//$regular_price 	= get_post_meta( $post->ID, '_sale_price_dates_to', true );
 		if(!empty($regular_price)) {
-	?>
-		<p id="sales_timer_display" style="color:green" data-date="<?php echo date('Y-m-d',$regular_price);?>"></p> 
-	<?php
-		}
+	
+		echo '<p id="sales_timer_display'.$product->get_id().'" style="color:green" data-date="'.date("Y-m-d",$regular_price).'"></p>';
+	}
 		
 } // end function
 //add_action( 'woocommerce_single_product_summary', 'sales_timer_echo_product', 12 ); // hook number
-
+?>
 
 
 
